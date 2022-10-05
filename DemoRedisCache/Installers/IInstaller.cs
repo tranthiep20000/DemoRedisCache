@@ -2,6 +2,6 @@
 {
     public interface IInstaller
     {
-        void InstallerServices(IConfiguration configuration);
+        public void InstallerServices(WebApplicationBuilder builder, IConfiguration configuration);
     }
 }

@@ -6,12 +6,11 @@ namespace DemoRedisCache.Installers
 {
     public class CacheInstaller : IInstaller
     {
-        public void InstallerServices(IConfiguration configuration)
+        public void InstallerServices(WebApplicationBuilder builder, IConfiguration configuration)
         {
             var redisConfiguration = new RedisConfiguration();
             configuration.GetSection("RedisConfiguration").Bind(redisConfiguration);
 
-            var builder = WebApplication.CreateBuilder();
             builder.Services.AddSingleton(redisConfiguration);
 
             if (!redisConfiguration.Enabled)
